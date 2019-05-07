@@ -6,13 +6,14 @@ import android.graphics.Canvas
 
 class CharacterSprite(bitmap: Bitmap) {
     var image: Bitmap = bitmap
-    var x = 100f
+    var x = (Resources.getSystem().displayMetrics.widthPixels/2).toFloat()
     var y = 100f
-    var xVelocity = 10
     var yVelocity = 5
+    var xVelocity = 10
+
 
     init {
-        image = Bitmap.createScaledBitmap(image, 100, 100, true)
+        image = Bitmap.createScaledBitmap(image, 200, 200, true)
     }
 
     fun draw(canvas: Canvas) {
@@ -20,19 +21,7 @@ class CharacterSprite(bitmap: Bitmap) {
     }
 
     fun update() {
-        if (x < 0 && y < 0) {
-            x = ((Resources.getSystem().displayMetrics.widthPixels) / 2).toFloat()
-            y = ((Resources.getSystem().displayMetrics.widthPixels) / 2).toFloat()
-        } else {
-            x += xVelocity
-            y += yVelocity
 
-            if (x > (Resources.getSystem().displayMetrics.widthPixels - 100) || x < 0) {
-                xVelocity *= -1
-            }
-            if (y > (Resources.getSystem().displayMetrics.heightPixels - 100) || y < 0) {
-                yVelocity *= -1
-            }
-        }
+        y += yVelocity
     }
 }
