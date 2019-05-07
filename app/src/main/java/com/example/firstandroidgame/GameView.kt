@@ -36,7 +36,7 @@ class GameView(context: Context) : SurfaceView(context), SurfaceHolder.Callback 
     }
 
     override fun onTouchEvent(event: MotionEvent?): Boolean {
-        characterSprite.y = characterSprite.y - (characterSprite.yVelocity * 10)
+        characterSprite.y = characterSprite.y - (characterSprite.yVelocity * 15)
         return super.onTouchEvent(event)
 
     }
@@ -60,20 +60,20 @@ class GameView(context: Context) : SurfaceView(context), SurfaceHolder.Callback 
 
         val bmp: Bitmap = getResizedBitmap(
             BitmapFactory.decodeResource(resources, R.drawable.pillar_upside_down),
-            500,
+            400,
             (Resources.getSystem().displayMetrics.heightPixels / 2)
         )
         val bmp2: Bitmap = getResizedBitmap(
             BitmapFactory.decodeResource(resources, R.drawable.pillar),
-            500,
+            400,
             (Resources.getSystem().displayMetrics.heightPixels / 2)
         )
         val y: Int
         val x: Int
 
-        pipe1 = PipeSprite(bmp, bmp2, 0, 2000)
-        pipe2 = PipeSprite(bmp, bmp2, -250, 3200)
-        pipe3 = PipeSprite(bmp, bmp2, 250, 4500)
+        pipe1 = PipeSprite(bmp, bmp2, 0, 1800)
+        pipe2 = PipeSprite(bmp, bmp2, -250, 2800)
+        pipe3 = PipeSprite(bmp, bmp2, 250, 4000)
     }
 
     fun update() {
@@ -112,7 +112,7 @@ class GameView(context: Context) : SurfaceView(context), SurfaceHolder.Callback 
                 val r = Random()
                 val value1 = r.nextInt(500)
                 val value2 = r.nextInt(500)
-                pipe.x = (Resources.getSystem().displayMetrics.heightPixels) + value1 + 1000
+                pipe.x = (Resources.getSystem().displayMetrics.widthPixels) + value1 + 1000
                 pipe.y = value2 - 250
             }
         }
